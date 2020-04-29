@@ -18,14 +18,14 @@ Route::get('/', function () {
 });
 
 
-// Route::domain('www.team.com')->group(function(){
-
-	Route::prefix('/login')->group(function(){
-
-		Route::get('/',"LoginController@login");
-		Route::post('/logindo',"LoginController@logindo");
-
-	});
 
 
-// )};
+Route::prefix('/login')->group(function(){
+	Route::get('/',"LoginController@login");//登录
+	Route::post('/logindo',"LoginController@logindo");
+});
+
+Route::prefix('/admin')->group(function(){
+	Route::get('/','Admin\IndexController@index');
+});
+
