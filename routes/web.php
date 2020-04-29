@@ -21,3 +21,7 @@ Route::prefix('/')->group(function(){
     Route::post('update/{id}','KewuController@update');//执行编辑
     Route::get('destory/{id}','KewuController@destroy');//删除
 });
+
+Route::prefix('/admin')->group(function(){
+	Route::get('/','Admin\IndexController@index');
+});
