@@ -17,6 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::prefix('/meeting')->group(function(){
     Route::get('create','Admin\meetingController@create');//添加
     Route::post('store','Admin\meetingController@store');//执行添加
@@ -24,4 +25,7 @@ Route::prefix('/meeting')->group(function(){
     Route::get('destroy/{id}','Admin\meetingController@destroy');//删除
     Route::get('edit/{id}','Admin\meetingController@edit');//编辑展示
     Route::post('update/{id}','Admin\meetingController@update');//执行更新
+});
+Route::prefix('/admin')->group(function(){
+	Route::get('/','Admin\IndexController@index');
 });
