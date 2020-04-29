@@ -23,6 +23,8 @@ Route::get('/', function () {
 Route::prefix('/login')->group(function(){
 	Route::get('/',"LoginController@login");//登录
 	Route::post('/logindo',"LoginController@logindo");
+	Route::get('/logincreate','LoginController@logincreate');//管理员添加
+	Route::post('/loginstroe','LoginController@loginstroe');//管理员执行添加
 });
 
 Route::prefix('/admin')->group(function(){

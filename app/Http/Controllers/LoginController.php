@@ -25,6 +25,30 @@ class LoginController extends Controller
     	}
     	session(["adminuser"=>$adminuser]);
 
+    	// 
+
+
+    	return redirect("/admin");
+	}
+
+
+	// 管理员添加
+	public function logincreate(){
+		return view("login.logincreate");
+	}
+	// 管理员执行添加
+	public function loginstroe(Request $request){
+		// 接值
+		$login = $request->except('_token');
+		// dd(enctype($login['a_pwd']));
+		// dd($login);
+		$login['a_pwd'] = encrypt($login['a_pwd']);
+		// dd($login);
+		$res = Admin::create($login);
+		// dd($res);
+		if($res){
+			return redirect('/login');
+		}
 	}
 
 }

@@ -9,9 +9,9 @@
 </head>
 <body>
 
-<form role="form" action="{{url('login/logindo')}}" method="post">
+<form role="form" action="{{url('login/loginstroe')}}" method="post">
 	@csrf
-	<b style="color:red">{{session('msg')}}</b>
+	<!-- <b style="color:red">{{session('msg')}}</b> -->
 	<div class="form-group">
 		<label for="name">名称</label>
 		<input type="text" class="form-control" name="a_name" placeholder="请输入名称">
@@ -20,17 +20,16 @@
 		<label for="name">密码</label>
 		<input type="password" class="form-control" name="a_pwd"   placeholder="密码">
 	</div>
-	<!-- <div class="form-group">
+	<div class="form-group">
 		<label for="name">等级</label>
 		<select name="a_level" id="">
 			<option value="1">系统管理员</option>
 			<option value="2">主管</option>
 			<option value="3">业务员</option>
 		</select>
-	</div> -->
+	</div>
 	
-	<button type="submit" class="btn btn-default">提交</button>
-	<button type="submit" class="btn btn-default"><a href="{{url('login/logincreate')}}">添加</a> </button>
+	<button type="submit" class="btn btn-default">添加</button>
 </form>
 	
 </body>
