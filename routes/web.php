@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::prefix('/')->group(function(){
+    Route::get('/','KewuController@index');//列表展示
+    Route::get('create','KewuController@create');//添加
+    Route::post('store','KewuController@store');//添加方法
+    Route::get('edit/{id}','KewuController@edit');//编辑展示
+    Route::post('update/{id}','KewuController@update');//执行编辑
+    Route::get('destory/{id}','KewuController@destroy');//删除
 });
