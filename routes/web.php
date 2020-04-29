@@ -16,3 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::prefix('/meeting')->group(function(){
+    Route::get('create','Admin\meetingController@create');//添加
+    Route::post('store','Admin\meetingController@store');//执行添加
+    Route::get('/','Admin\meetingController@index');//展示
+    Route::get('destroy/{id}','Admin\meetingController@destroy');//删除
+    Route::get('edit/{id}','Admin\meetingController@edit');//编辑展示
+    Route::post('update/{id}','Admin\meetingController@update');//执行更新
+});
