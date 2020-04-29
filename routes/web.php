@@ -25,6 +25,14 @@ Route::prefix('/login')->group(function(){
 	Route::post('/logindo',"LoginController@logindo");
 	Route::get('/logincreate','LoginController@logincreate');//管理员添加
 	Route::post('/loginstroe','LoginController@loginstroe');//管理员执行添加
+	//管理员展示
+	Route::get('/loginindex','LoginController@loginindex');
+	//管理员删除
+	Route::get('/logindel/{id}','LoginController@logindel');
+	//管理员修改
+	Route::get('/loginupd/{id}','LoginController@loginupd');
+	Route::post('/loginupdate/{id}','LoginController@loginupdate');
+
 });
 
 Route::prefix('/admin')->group(function(){

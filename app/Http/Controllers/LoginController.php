@@ -51,4 +51,42 @@ class LoginController extends Controller
 		}
 	}
 
+	// 管理员列表
+	public function loginindex(){
+		$admin = Admin::all();
+		// dd($admin);
+		return view("login.loginindex",['admin'=>$admin]);
+	}
+
+
+	// 删除
+	public function logindel($id){
+		$res = Admin::where('a_id',$id)->delete();
+        if($res){
+            return redirect('/login/loginindex');
+        }
+	}
+
+
+	 public function loginupd($id) {
+        //修改第一个页面
+        // 根据id获取记录信息
+        $adminInfo = Admin::where('a_id',$id)->first();
+        // $pwd = decrypt($adminInfo->a_pwd);
+        return view("login.loginupd",['adminInfo'=>$adminInfo]);
+    }
+
+  
+    public function loginupdate(Request $request, $id){
+        // 接值
+        $post = $request->except("_token");
+        $res = Admin::where('a_id',$id)->update($post);
+        if($res!==false){
+            return redirect("/login/loginindex");
+        }
+    }
+
+
+
+
 }
