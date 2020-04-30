@@ -8,7 +8,11 @@
 	<title>Document</title>
 </head>
 <body>
-	<center>
+	<center> 
+		<form>
+			管理员名称<input type="text" name="name" value="{{$name}}">
+			<input type="submit" value="搜索">
+		</form>
 		<table>
 			<tr>
 				<td>id</td>

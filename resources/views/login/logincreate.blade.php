@@ -23,9 +23,9 @@
 	<div class="form-group">
 		<label for="name">等级</label>
 		<select name="a_level" id="">
-			<option value="1">系统管理员</option>
-			<option value="2">主管</option>
-			<option value="3">业务员</option>
+			<option value="1" >系统管理员</option>
+			<option value="2" >主管</option>
+			<option value="3" >业务员</option>
 		</select>
 	</div>
 	

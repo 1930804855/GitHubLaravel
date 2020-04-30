@@ -13,7 +13,15 @@
 <body>
 <center><h2>拜访记录展示</h2></center>
 <table class="table table-condensed">
-	
+	<form>
+        业务员名称：<select name="yewuName" id="">
+            <option value="">--请选择--</option>
+            @foreach($yewuData as $v)
+            <option value="{{$v->y_id}}" {{$yewuName==$v->y_id?'selected':''}}>{{$v->y_name}}</option>
+            @endforeach
+        </select>
+        <input type="submit" value="搜索" id="">
+    </form>
 	<thead>
 		<tr>
 			<th>业务员名称</th>
@@ -48,7 +56,7 @@
     </tbody>
     
 </table>
-{{$data->links()}}
+{{$data->appends(['yewuName' => $yewuName])->links()}}
 </body>
 </html>
 @endsection
