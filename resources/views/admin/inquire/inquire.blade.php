@@ -2,7 +2,8 @@
 @section('title', '综合查询')
 @section('content')
 <center>
-	<h1>综合查询</h1>
+	<h1>综合查询-客户查询</h1>
+	<a href="{{url('/inquire/meeting')}}"><button>客户拜访记录查询</button></a>
 	<form>
 		搜索：
 		<input type="input" name="name" value="{{$name}}" placeholder="客户名称">
