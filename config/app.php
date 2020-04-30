@@ -226,7 +226,9 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        
 
     ],
-
+    'pageSize'=>3,//每页的偏移量
+    'timezone'=>"Shanghai"
 ];

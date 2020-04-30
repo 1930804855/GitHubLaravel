@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Kewu;
+use App\Yewu;
 class KewuController extends Controller
 {
     /**
@@ -13,8 +14,9 @@ class KewuController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {   $pageSize = config('app.pageSize'); 
+        $KewuInfo = Kewu::join('yewu','kewu.y_id','=','yewu.y_id')->paginate($pageSize);
+        return view('admin.kewu.index',['KewuInfo'=>$KewuInfo]);
     }
 
     /**
@@ -23,8 +25,9 @@ class KewuController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('kewu.create');
+    {   
+        $yewu = Yewu::all();
+        return view('admin.kewu.create',['yewu'=>$yewu]);
     }
 
     /**
@@ -35,7 +38,13 @@ class KewuController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post = request()->except('_token');
+        $res = Kewu::create($post);
+    
+        if($res){
+            return redirect('/kewu');
+        }
+        
     }
 
     /**
@@ -57,7 +66,9 @@ class KewuController extends Controller
      */
     public function edit($id)
     {
-        //
+        $yewu = Yewu::all();
+        $KewuInfo = Kewu::join('yewu','kewu.y_id','=','yewu.y_id')->find($id);
+        return view('admin.kewu.edit',['yewu'=>$yewu,'KewuInfo'=>$KewuInfo]);
     }
 
     /**
@@ -69,7 +80,12 @@ class KewuController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = $request->except('_token');
+        $res = Kewu::where('k_id',$id)->update($post);
+
+        if($res!=false){
+            return redirect('/kewu');
+        }
     }
 
     /**
@@ -80,6 +96,9 @@ class KewuController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $res = Kewu::destroy($id);
+        if($res){
+            return redirect('/kewu');  
+        }
     }
 }
