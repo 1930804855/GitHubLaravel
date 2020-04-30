@@ -17,10 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-
-
-
 Route::prefix('/login')->group(function(){
 	Route::get('/',"LoginController@login");//登录
 	Route::post('/logindo',"LoginController@logindo");
@@ -36,7 +32,6 @@ Route::prefix('/login')->group(function(){
 
 });
 
-
 Route::prefix('/meeting')->group(function(){
     Route::get('create','Admin\MeetingController@create');//添加
     Route::post('getCustome/{id}','Admin\MeetingController@getCustome');//添加
@@ -51,3 +46,7 @@ Route::prefix('/admin')->group(function(){
 	Route::get('/','Admin\IndexController@index');
 });
 
+Route::prefix('/inquire')->group(function(){
+	Route::get('/','Admin\InquireController@index');
+	Route::get('/ajax','Admin\InquireController@ajax');
+});

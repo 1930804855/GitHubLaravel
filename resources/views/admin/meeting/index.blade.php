@@ -1,5 +1,5 @@
 @extends('admin/layouts/layout')
-@section('title', '管理官展示')
+@section('title', '客户会议展示')
 @section('content')
 <!DOCTYPE html>
 <html>
