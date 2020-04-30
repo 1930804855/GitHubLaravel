@@ -230,5 +230,7 @@ return [
 
     ],
     'pageSize'=>3,//每页的偏移量
-    'timezone'=>"Shanghai"
+
+    'timezone'=>"Shanghai",
+
 ];
