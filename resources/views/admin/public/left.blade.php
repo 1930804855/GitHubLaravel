@@ -1,5 +1,5 @@
 <div>
-	<div class="col-sm-1">
+	<div class="col-sm-1 navbar-collapse">
       <ul class="nav nav-pills nav-stacked">
         <li class="active"><a href="#">业务员管理</a></li>
         <li><a href="#">客户管理</a></li>

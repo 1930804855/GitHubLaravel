@@ -1,16 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8"> 
-	<title>TEAM布局</title>
-	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
-	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-<body>
+@extends('admin/layouts/layout')
+@section('title', '管理官展示')
+@section('content')
+
 
 <center>
-    <h2>商品分类</h2><a href="{{'/yewu'}}" class="btn btn-default">列表展示</a>
+    <h2>业务员添加</h2><a href="{{'/yewu'}}" class="btn btn-default">列表展示</a>
     <form class="form-horizontal" role="form"  action="{{url('/yewu/store')}}" method="post" >
     @csrf   
         <div class="form-group">
@@ -50,6 +44,7 @@
 
 </body>
 </html>
+@endsection
 
 
  
