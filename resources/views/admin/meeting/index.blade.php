@@ -11,7 +11,9 @@
 	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<center><h2>拜访记录展示</h2></center>
+<center><h2>拜访记录展示</h2>
+<a href="{{url('/meeting/create')}}"><button>添加客户拜访记录</button></a>
+</center>
 <table class="table table-condensed">
 	<form>
         业务员名称：<select name="yewuName" id="">

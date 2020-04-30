@@ -15,20 +15,12 @@ class LoginController extends Controller
 
 
 	public function logindo(Request $request){
-		// echo encrypt('123456');
 		$login = $request->except("_token");
-		// dd($login);
     	$adminuser = Admin::where('a_name',$login['a_name'])->first();
-    	// dd($adminuser);
-    	// dd($login['a_pwd']);
     	if(decrypt($adminuser->a_pwd)!=$login['a_pwd']){
     		return redirect("/login")->with('msg','用户名或密码不对！');
     	}
     	session(["adminuser"=>$adminuser]);
-
-    	// 
-
-
     	return redirect("/admin");
 	}
 
@@ -82,7 +74,7 @@ class LoginController extends Controller
         //修改第一个页面
         // 根据id获取记录信息
         $adminInfo = Admin::where('a_id',$id)->first();
-        // $pwd = decrypt($adminInfo->a_pwd);
+        $adminInfo->a_pwd = decrypt($adminInfo->a_pwd);
         return view("login.loginupd",['adminInfo'=>$adminInfo]);
     }
 

@@ -2,7 +2,7 @@
 @section('title', '首页')
 @section('content')
 
-	<form class="form-horizontal" role="form" action="{{url('/store')}}" method="post">
+	<form class="form-horizontal" role="form" action="{{url('/kewu/store')}}" method="post">
 	@csrf
 		<div class="form-group">
 			<label for="firstname" class="col-sm-2 control-label">客户名称</label>

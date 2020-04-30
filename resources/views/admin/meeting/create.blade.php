@@ -77,7 +77,9 @@
     </style>
 </head>
 <body>
-<center><h2>拜访记录登记</h2></center>
+<center><h2>拜访记录登记</h2>
+  <a href="{{url('/meeting')}}"><button>客户拜访记录展示</button></a>
+</center>
 <form class="form-horizontal" action="{{url('/meeting/store')}}" method="post" role="form">
 @csrf
 	<div class="form-group">

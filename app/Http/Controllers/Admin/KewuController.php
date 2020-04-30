@@ -83,7 +83,7 @@ class KewuController extends Controller
         $post = $request->except('_token');
         $res = Kewu::where('k_id',$id)->update($post);
 
-        if($res!=false){
+        if($res!==false){
             return redirect('/kewu');
         }
     }

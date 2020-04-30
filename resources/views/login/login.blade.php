@@ -20,17 +20,9 @@
 		<label for="name">密码</label>
 		<input type="password" class="form-control" name="a_pwd"   placeholder="密码">
 	</div>
-	<!-- <div class="form-group">
-		<label for="name">等级</label>
-		<select name="a_level" id="">
-			<option value="1">系统管理员</option>
-			<option value="2">主管</option>
-			<option value="3">业务员</option>
-		</select>
-	</div> -->
 	
-	<button type="submit" class="btn btn-default">提交</button>
-	<button type="submit" class="btn btn-default"><a href="{{url('login/logincreate')}}">添加</a> </button>
+	<button type="submit" class="btn btn-default">登录</button>
+	<button type="submit" class="btn btn-default"><a href="{{url('login/logincreate')}}">注册</a> </button>
 </form>
 	
 </body>
