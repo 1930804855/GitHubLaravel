@@ -44,11 +44,11 @@ Route::prefix('/meeting')->middleware('islogin')->group(function(){
     Route::post('update/{id}','Admin\MeetingController@update');//执行更新
 });
 
-Route::prefix('/admin')->group(function(){
+Route::prefix('/admin')->middleware('islogin')->group(function(){
 	Route::get('/','Admin\IndexController@index');
 });
 
-Route::prefix('/inquire')->group(function(){
+Route::prefix('/inquire')->middleware('islogin')->group(function(){
 	Route::get('/','Admin\InquireController@index');
 	Route::get('/ajax','Admin\InquireController@ajax');
 	Route::get('/meeting','Admin\InquireController@meeting');
