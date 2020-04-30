@@ -26,9 +26,9 @@
 	<div class="form-group">
 		<label for="name">等级</label>
 		<select name="a_level" id="">
-			<option value="1">系统管理员</option>
-			<option value="2">主管</option>
-			<option value="3">业务员</option>
+			<option value="1" @if($adminInfo->a_level==1)selected @endif>系统管理员</option>
+			<option value="2" @if($adminInfo->a_level==2)selected @endif>主管</option>
+			<option value="3" @if($adminInfo->a_level==3)selected @endif>业务员</option>
 		</select>
 	</div>
 	

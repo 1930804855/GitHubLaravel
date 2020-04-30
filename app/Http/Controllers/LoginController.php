@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Admin;
+use DB;
 class LoginController extends Controller
 {
 
@@ -52,10 +53,19 @@ class LoginController extends Controller
 	}
 
 	// 管理员列表
-	public function loginindex(){
-		$admin = Admin::all();
+	public function loginindex(){ 
+
+		$name = request()->name;
+		// dd($name);
+		$where = [];
+		if($name){
+			$where[] = ['a_name','like',"%$name%"];
+		}
+
+
+		$admin = DB::table('admin')->where($where)->get();
 		// dd($admin);
-		return view("login.loginindex",['admin'=>$admin]);
+		return view("login.loginindex",['admin'=>$admin,'name'=>$name]);
 	}
 
 
