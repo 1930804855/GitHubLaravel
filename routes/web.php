@@ -38,12 +38,13 @@ Route::prefix('/login')->group(function(){
 
 
 Route::prefix('/meeting')->group(function(){
-    Route::get('create','Admin\meetingController@create');//添加
-    Route::post('store','Admin\meetingController@store');//执行添加
-    Route::get('/','Admin\meetingController@index');//展示
-    Route::get('destroy/{id}','Admin\meetingController@destroy');//删除
-    Route::get('edit/{id}','Admin\meetingController@edit');//编辑展示
-    Route::post('update/{id}','Admin\meetingController@update');//执行更新
+    Route::get('create','Admin\MeetingController@create');//添加
+    Route::post('getCustome/{id}','Admin\MeetingController@getCustome');//添加
+    Route::post('store','Admin\MeetingController@store');//执行添加
+    Route::get('/','Admin\MeetingController@index');//展示
+    Route::get('destroy/{id}','Admin\MeetingController@destroy');//删除
+    Route::get('edit/{id}','Admin\MeetingController@edit');//编辑展示
+    Route::post('update/{id}','Admin\MeetingController@update');//执行更新
 });
 
 Route::prefix('/admin')->group(function(){

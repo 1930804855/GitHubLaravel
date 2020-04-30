@@ -16,7 +16,12 @@ class MeetingController extends Controller
      */
     public function index()
     {
-        //
+        //查询访问数据
+        $data=Meeting::leftjoin('kewu','meeting.k_id','=','kewu.k_id')
+                     ->leftjoin('yewu','meeting.y_id','=','yewu.y_id')
+                     ->paginate(3);
+        // dd($data);
+        return view('admin.meeting.index',['data'=>$data]);
     }
 
     /**
@@ -26,11 +31,24 @@ class MeetingController extends Controller
      */
     public function create()
     {
-        //
+        
         // 查询业务员信息
         $yewuData=Yewu::all();
         // dd($yewuData);
         return view('admin.meeting.create',['yewuData'=>$yewuData]);
+    }
+    public function getCustome($id){
+        $where=[
+            ['y_id','=',$id]
+        ];
+        $kewuData=Kewu::where($where)->get();
+        // dd($kewuData);
+        $data='';
+        foreach($kewuData as $k=>$v){
+            $data.= "<option value='".$v->k_id."'>".$v->k_name."</option>";
+        }
+        return $data;
+
     }
     
 
@@ -42,7 +60,14 @@ class MeetingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //获取提交数据
+        $data=$request->except('_token');
+        // dd($data);
+        $res=Meeting::insert($data);
+        // dd($res);
+        if($res){
+            return redirect('/meeting');
+        }
 
     }
 
@@ -66,6 +91,13 @@ class MeetingController extends Controller
     public function edit($id)
     {
         //
+        $data=Meeting::where('m_id',$id)->first();
+        $yewuData=Yewu::all();
+        // dd($yewuData);
+        // dd($data);
+        // 获取客户数据
+        $kewuData=Kewu::all();
+        return view('admin.meeting.edit',['data'=>$data,'yewuData'=>$yewuData,'KewuData'=>$kewuData]);
     }
 
     /**
@@ -77,7 +109,16 @@ class MeetingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //获取提交数据
+        // dd($id);
+        $data=$request->except('_token');
+        // dd($data);
+        
+        $res=Meeting::where('m_id',$id)->update($data);
+        // dd($res);
+        if($res!==false){
+            return redirect('/meeting');
+        }
     }
 
     /**
@@ -89,5 +130,9 @@ class MeetingController extends Controller
     public function destroy($id)
     {
         //
+        $res=Meeting::where('m_id',$id)->delete();
+        if($res){
+            return redirect('/meeting');
+        }
     }
 }

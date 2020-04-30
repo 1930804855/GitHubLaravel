@@ -77,8 +77,8 @@
     </style>
 </head>
 <body>
-<center><h2>拜访记录登记</h2></center>
-<form class="form-horizontal" action="{{url('/meeting/store')}}" method="post" role="form">
+<center><h2>拜访记录修改</h2></center>
+<form class="form-horizontal" action="{{url('/meeting/update/'.$data->m_id)}}" method="post" role="form">
 @csrf
 	<div class="form-group">
 		<label for="firstname" class="col-sm-2 control-label">业务员名称</label>
@@ -86,7 +86,7 @@
 			<select class="area" name="y_id" id="">
 				<option value="0">--请选择--</option>
 	  			@foreach($yewuData as $v)
-				<option value="{{$v->y_id}}">{{$v->y_name}}</option>
+				<option value="{{$v->y_id}}"{{$data->y_id==$v->y_id?'selected':''}}>{{$v->y_name}}</option>
 				@endforeach
 			</select>
 		</div>
@@ -95,47 +95,47 @@
 		<label for="firstname" class="col-sm-2 control-label">客户名称</label>
 		<div class="col-sm-10">
 			<select name="k_id" id="kehu">
-				<option value="0">--请选择--</option>
+                <option value="0">--请选择--</option>
+                @foreach($KewuData as $v)
+				<option value="{{$v->k_id}}"{{$data->k_id==$v->k_id?'selected':''}}>{{$v->k_name}}</option>
+				@endforeach
 			</select>
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="firstname" class="col-sm-2 control-label">访问时间</label>
 		<div class="col-sm-10">
-			<input type="text" id="select_0" name="m_time" placeholder="请选择访问时间"/> 
+			<input type="text" id="select_0" name="m_time" value="{{$data->m_time}}"/> 
 
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="firstname" class="col-sm-2 control-label">访问人</label>
 		<div class="col-sm-10">
-			<input type="text" class="form-control" name="m_man" id="firstname" 
-				   placeholder="请输入访问人名字">
+			<input type="text" class="form-control" name="m_man" id="firstname" value="{{$data->m_man}}">
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="firstname" class="col-sm-2 control-label">访问地址</label>
 		<div class="col-sm-10">
-			<input type="text" class="form-control" name="m_url" id="firstname" 
-				   placeholder="请输入访问地址">
+			<input type="text" class="form-control" name="m_url" id="firstname" value="{{$data->m_url}}">
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="firstname" class="col-sm-2 control-label">访问详情</label>
 		<div class="col-sm-10">
-			<textarea type="text" class="form-control" name="m_desc" id="firstname" 
-				   placeholder="请输入访问详情"></textarea>
+			<textarea type="text" class="form-control" name="m_desc" id="firstname" >{{$data->m_desc}}</textarea>
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="firstname" class="col-sm-2 control-label">下次访问时间</label>
 		<div class="col-sm-10">
-		<input type="text" id="select_1" name="m_ntime" placeholder="请选择下次访问时间"/>
+		<input type="text" id="select_1" name="m_ntime" value="{{$data->m_ntime}}"/>
 		</div>
 	</div>
 	<div class="form-group">
 		<div class="col-sm-offset-2 col-sm-10">
-			<button type="submit" class="btn btn-default">登记</button>
+			<button type="submit" class="btn btn-default">修改登记</button>
 		</div>
 	</div>
 </form>
