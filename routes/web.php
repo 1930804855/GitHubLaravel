@@ -20,6 +20,7 @@ Route::get('/', function () {
 
 
 
+
 Route::prefix('/login')->group(function(){
 	Route::get('/',"LoginController@login");//登录
 	Route::post('/logindo',"LoginController@logindo");
@@ -33,6 +34,16 @@ Route::prefix('/login')->group(function(){
 	Route::get('/loginupd/{id}','LoginController@loginupd');
 	Route::post('/loginupdate/{id}','LoginController@loginupdate');
 
+});
+
+
+Route::prefix('/meeting')->group(function(){
+    Route::get('create','Admin\meetingController@create');//添加
+    Route::post('store','Admin\meetingController@store');//执行添加
+    Route::get('/','Admin\meetingController@index');//展示
+    Route::get('destroy/{id}','Admin\meetingController@destroy');//删除
+    Route::get('edit/{id}','Admin\meetingController@edit');//编辑展示
+    Route::post('update/{id}','Admin\meetingController@update');//执行更新
 });
 
 Route::prefix('/admin')->group(function(){
