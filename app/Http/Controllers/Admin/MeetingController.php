@@ -16,12 +16,23 @@ class MeetingController extends Controller
      */
     public function index()
     {
+         // 查询业务员信息
+         $yewuData=Yewu::all();
+        //  接收搜索数据
+        $yewuName=request()->get('yewuName');
+        // dump($yewuName);
+        $where=[];
+        if($yewuName){
+            $where[]=['yewu.y_id','=',$yewuName];
+        }
+        // dump($where);
         //查询访问数据
         $data=Meeting::leftjoin('kewu','meeting.k_id','=','kewu.k_id')
                      ->leftjoin('yewu','meeting.y_id','=','yewu.y_id')
+                     ->where($where)
                      ->paginate(3);
         // dd($data);
-        return view('admin.meeting.index',['data'=>$data]);
+        return view('admin.meeting.index',['data'=>$data,'yewuData'=>$yewuData,'yewuName'=>$yewuName]);
     }
 
     /**
