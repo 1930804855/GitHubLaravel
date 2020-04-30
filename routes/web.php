@@ -51,4 +51,5 @@ Route::prefix('/admin')->group(function(){
 Route::prefix('/inquire')->group(function(){
 	Route::get('/','Admin\InquireController@index');
 	Route::get('/ajax','Admin\InquireController@ajax');
+	Route::get('/meeting','Admin\InquireController@meeting');
 });
